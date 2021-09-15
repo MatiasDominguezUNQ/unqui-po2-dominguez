@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Counter {
 	
-	private ArrayList<Integer> list1= new ArrayList<Integer>();
+	private ArrayList<Integer> list= new ArrayList<Integer>();
 	
 	public int getEvenOcurrences() {
 		
 		int even = 0;
 		
-		for (int num:list1) {
+		for (int num:list) {
 			if(num % 2 == 0) even=+1;
 		}
 		
@@ -19,17 +19,17 @@ public class Counter {
 	
 	public void addNumber(int n) {
 		
-		list1.add(n);
+		list.add(n);
 	}
 
-	public ArrayList<Integer> getList1() {
+	public ArrayList<Integer> getList() {
 		
-		return list1;
+		return list;
 	}
 
-	public void setList1(ArrayList<Integer> list1) {
+	public void setList1(ArrayList<Integer> list) {
 		
-		this.list1 = list1;
+		this.list = list;
 	}
 	
 }
