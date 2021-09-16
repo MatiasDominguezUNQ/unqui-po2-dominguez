@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class Counter {
 	
 	private ArrayList<Integer> list= new ArrayList<Integer>();
+
+	public void addNumber(int n) {
+		
+		list.add(n);
+	}
 	
 	public int getEvenOcurrences() {
 		
@@ -17,7 +22,7 @@ public class Counter {
 		return even;
 	}
 	
-	public int dissassembleNumber() {
+	public int disassembleNumbers() {
 		
 		int highestEven = 0;
 		int highestSum  = 0;
@@ -25,18 +30,18 @@ public class Counter {
 		for (int number:list) {
 			int numberToSearch = number;
 			int sum = 0;
-			int multiple = this.getFigures(numberToSearch); 
-			int even = multiple * 2;
-			while (multiple > 1) {
-				n = numberToSearch / multiple;
-				n = n * multiple;
+			int unit = this.getUnit(numberToSearch); 
+			int even = unit * 2;
+			while (unit > 1) {
+				n = numberToSearch / unit;
+				n = n * unit;
 				numberToSearch = numberToSearch - n;
 				if (n % even == 0) sum++;
-				multiple = multiple / 10;
+				unit = unit / 10;
 				even = even / 10;
 			}
-			n = numberToSearch / multiple;
-			n = n * multiple;
+			n = numberToSearch / unit;
+			n = n * unit;
 			numberToSearch = numberToSearch - n;
 			if (n % even == 0) sum++;
 			if (sum > highestSum) {
@@ -47,7 +52,7 @@ public class Counter {
 		return highestEven;
 	}
 	
-	private int getFigures(int number) {
+	private int getUnit(int number) {
 		
 		double figures = 0;
 		long temp = 1;
@@ -55,23 +60,20 @@ public class Counter {
 		    figures++;
 		    temp *= 10;
 		}
-		double multiple = Math.pow(10, figures - 1);
-		return (int)Math.round(multiple);
+		double unit = Math.pow(10, figures - 1);
+		return (int)Math.round(unit);
 	}
 
-	public void addNumber(int n) {
-		
-		list.add(n);
+	public int highestMultiple(int x, int y) {
+		int a = x, b = y, gcd = 1;  
+		for(int i = 1; i <= a && i <= b; ++i) { 
+			if(a % i == 0 && b % i == 0) gcd = i;  
+		}  
+		int n      = (a * b) / gcd; 
+		int number = -1;
+		for (int i = 0; (n * i) < 1000; i++) {
+			number = n * i;
+		}
+		return number;
 	}
-
-	public ArrayList<Integer> getList1() {
-		
-		return list;
-	}
-
-	public void setList1(ArrayList<Integer> list1) {
-		
-		this.list = list1;
-	}
-	
 }
