@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class MultiOperador {
 	private ArrayList<Integer> enteros= new ArrayList<Integer>();
 	
-	public void addNumber(int n) {
+	public void agregarEntero(int n) {
 		
 		enteros.add(n);
 	}

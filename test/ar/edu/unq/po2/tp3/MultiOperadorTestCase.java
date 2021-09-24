@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.tp3.MultiOperador;
-
 class MultiOperadorTestCase {
 	
 	private MultiOperador multiOperador;
@@ -15,10 +13,10 @@ class MultiOperadorTestCase {
 	public void setUp() throws Exception {
 		multiOperador = new MultiOperador();
 		
-		multiOperador.addNumber(100);
-		multiOperador.addNumber(1);
-		multiOperador.addNumber(2);
-		multiOperador.addNumber(3);
+		multiOperador.agregarEntero(100);
+		multiOperador.agregarEntero(1);
+		multiOperador.agregarEntero(2);
+		multiOperador.agregarEntero(3);
 		
 	}
 	
