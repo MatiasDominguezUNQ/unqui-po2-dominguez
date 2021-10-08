@@ -14,10 +14,6 @@ public class Trabajador {
 		this.ingresos = ingresos;
 	}
 
-	
-	
-	
-
 	public double getMontoImponible() {
 		double sumaParcial = 0;
 		for (Ingreso ingreso : this.getIngresos()) {
@@ -42,8 +38,7 @@ public class Trabajador {
 		ingresos.add(ingreso);
 	}
 
-	public Integer getCantidadDeIngresos() {
-		// TODO Auto-generated method stub
+	public int getCantidadDeIngresos() {
 		return ingresos.size();
 	}
 }

@@ -5,19 +5,11 @@ public class Producto {
 	private double precio ;
 	
 	
-	
-	
-	
 	public Producto(String nombre, double precio) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 	}
-	
-	
-
-	
-
 
 	public String getNombre() {
 		return nombre;
@@ -42,8 +34,6 @@ public class Producto {
 	public static void main(String[] args) {
 		
 	}
-
-
 
 	public void aumentarPrecio(double precio) {
 		this.setPrecio(precio + this.getPrecio());
