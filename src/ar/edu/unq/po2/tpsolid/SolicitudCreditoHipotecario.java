@@ -8,11 +8,18 @@ public class SolicitudCreditoHipotecario extends Solicitud {
 	}
 
 	@Override
-	public boolean cumpleRequisitos() {
+	public boolean esAceptable() {
 		
-		return (cliente.getSueldoNetoMensual() >= (this.montoMensual() * 50 / 100) && 
-				propiedad.getValorFiscal() >= (monto * 70 / 100) &&
-				cliente.getEdad() + (plazo / 12) < 65);
+		return (this.getCliente().getSueldoNetoMensual() >= (this.montoMensual() * 50 / 100) && 
+				propiedad.getValorFiscal() >= (this.getMonto() * 70 / 100) &&
+				this.getCliente().getEdad() + (this.getPlazo() / 12) < 65);
+	}
+	
+	@Override
+	public int montoMensual() {
+		int resultado;
+		resultado = this.getMonto() / this.getPlazo();
+		return resultado;
 	}
 
 }

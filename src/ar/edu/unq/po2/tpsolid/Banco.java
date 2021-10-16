@@ -20,7 +20,7 @@ public class Banco {
 	}
 
 	public void evaluarSolicitud(Solicitud solicitud) {
-		if (solicitud.cumpleRequisitos()) {
+		if (solicitud.esAceptable()) {
 			this.aceptarSolicitud();
 		} else {
 			this.rechazarSolicitud();
@@ -36,5 +36,15 @@ public class Banco {
 	private void aceptarSolicitud() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int totalADesembolsar() {
+		int montoTotal = 0;
+		for(Solicitud solicitud : solicitudes) {
+			if(solicitud.esAceptable()) {
+				montoTotal += solicitud.getMonto();
+			}
+		}
+		return montoTotal;
 	}
 }

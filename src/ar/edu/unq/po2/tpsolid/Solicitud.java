@@ -1,9 +1,9 @@
 package ar.edu.unq.po2.tpsolid;
 
 public abstract class Solicitud {
-	 int monto;
-	 int plazo;
-	 Cliente cliente;
+	 private int monto;
+	 private int plazo;
+	 private Cliente cliente;
 	
 	public Solicitud(int monto, int plazo, Cliente cliente) {
 		this.monto = monto;
@@ -11,12 +11,19 @@ public abstract class Solicitud {
 		this.cliente = cliente;
 	}
 	
-	public abstract boolean cumpleRequisitos();
+	public abstract boolean esAceptable();
 	
-	public int montoMensual() {
-		int resultado;
-		resultado = monto / plazo;
-		return resultado;
+	public abstract int montoMensual();
+
+	public int getMonto() {
+		return monto;
 	}
-	
+
+	public int getPlazo() {
+		return plazo;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
 }

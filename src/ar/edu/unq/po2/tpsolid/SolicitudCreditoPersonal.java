@@ -8,9 +8,16 @@ public class SolicitudCreditoPersonal extends Solicitud {
 	}
 
 	@Override
-	public boolean cumpleRequisitos() {
+	public boolean esAceptable() {
 		
-		return (cliente.sueldoNetoAnual() >= 15000 && cliente.getSueldoNetoMensual() >= (this.montoMensual() * 70 / 100));
+		return (getCliente().sueldoNetoAnual() >= 15000 && getCliente().getSueldoNetoMensual() >= (this.montoMensual() * 70 / 100));
+	}
+	
+	@Override
+	public int montoMensual() {
+		int resultado;
+		resultado = this.getMonto() / this.getPlazo();
+		return resultado;
 	}
 
 }
