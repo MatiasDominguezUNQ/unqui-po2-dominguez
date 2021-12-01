@@ -43,5 +43,9 @@ public class Cliente {
 	public int getSueldoNetoMensual() {
 		return sueldoNetoMensual;
 	}
+	
+	public void asociarBanco(Banco banco) {
+		this.bancoAsociado = banco;
+	}
 
 }
