@@ -3,7 +3,7 @@ package ar.edu.unq.po2.tpsolid;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServidorPop implements IRecepcion, IEnvio, IConexion {
+public class ServidorPop implements IServidor {
 
 	public List<Correo> recibirNuevos(String user, String pass) {
 		List<Correo> retorno = new ArrayList<Correo>();

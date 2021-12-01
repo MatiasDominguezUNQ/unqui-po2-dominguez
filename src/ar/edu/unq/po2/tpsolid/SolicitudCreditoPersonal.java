@@ -12,12 +12,4 @@ public class SolicitudCreditoPersonal extends Solicitud {
 		
 		return (getCliente().sueldoNetoAnual() >= 15000 && getCliente().getSueldoNetoMensual() >= (this.montoMensual() * 70 / 100));
 	}
-	
-	@Override
-	public int montoMensual() {
-		int resultado;
-		resultado = this.getMonto() / this.getPlazo();
-		return resultado;
-	}
-
 }

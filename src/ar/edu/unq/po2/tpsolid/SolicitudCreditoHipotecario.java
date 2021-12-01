@@ -14,12 +14,5 @@ public class SolicitudCreditoHipotecario extends Solicitud {
 				propiedad.getValorFiscal() >= (this.getMonto() * 70 / 100) &&
 				this.getCliente().getEdad() + (this.getPlazo() / 12) < 65);
 	}
-	
-	@Override
-	public int montoMensual() {
-		int resultado;
-		resultado = this.getMonto() / this.getPlazo();
-		return resultado;
-	}
 
 }

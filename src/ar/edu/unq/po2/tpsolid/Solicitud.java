@@ -13,7 +13,11 @@ public abstract class Solicitud {
 	
 	public abstract boolean esAceptable();
 	
-	public abstract int montoMensual();
+	public int montoMensual() {
+		int resultado;
+		resultado = this.getMonto() / this.getPlazo();
+		return resultado;
+	}
 
 	public int getMonto() {
 		return monto;
