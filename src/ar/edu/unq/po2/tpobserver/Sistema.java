@@ -1,48 +1,35 @@
 package ar.edu.unq.po2.tpobserver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Sistema {
-	private ArrayList<Articulo> articulos;
-	private ArrayList<ISubscriptor> subscriptores;
-
-	public Sistema(ArrayList<Articulo> articulos, ArrayList<ISubscriptor> subscriptores) {
-		super();
-		this.articulos = articulos;
-		this.subscriptores = subscriptores;
-	}
+	private List<Articulo> articulos;
+	private List<ISubscriptor> subscriptores;
 	
 	public Sistema() {
 		this.articulos = new ArrayList<Articulo>();
 		this.subscriptores = new ArrayList<ISubscriptor>();
 }
 
-	public ArrayList<Articulo> getArticulos() {
+	public List<Articulo> getArticulos() {
 		return articulos;
 	}
 	
-	public ArrayList<ISubscriptor> getSubscriptores() {
+	public List<ISubscriptor> getSubscriptores() {
 		return subscriptores;
-	}
-
-	public void setArticulos(ArrayList<Articulo> articulos) {
-		this.articulos = articulos;
-	}
-
-	public void setSubscriptores(ArrayList<ISubscriptor> subscriptores) {
-		this.subscriptores = subscriptores;
 	}
 	
 	public void agregarArticulo(Articulo articulo) {
 		this.articulos.add(articulo);
-		this.notificarPublicación(articulo);
+		this.notificarPublicacion(articulo);
 	}
 	
 	public void agregarSubscriptor(ISubscriptor subscriptor) {
 		this.subscriptores.add(subscriptor);
 	}
 
-	private void notificarPublicación(Articulo articulo) {
+	private void notificarPublicacion(Articulo articulo) {
 		for (ISubscriptor subscriptor : this.getSubscriptores()) {
 			this.notificarSiEstaInteresado(subscriptor, articulo);
 		}

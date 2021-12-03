@@ -37,12 +37,12 @@ public class PublicacionesTest {
 		this.articulo1 = new Articulo("articulo1", autores1, filiaciones1, "Informativo", "Bs. As.", palabrasClave1);
 		this.articulo2 = new Articulo("articulo2", autores2, filiaciones2, "Cientifico", "Mendoza", palabrasClave2);
 		this.subscriptor = mock(ISubscriptor.class);
+		this.sistema.agregarSubscriptor(subscriptor);
 
 	}
 
 	@Test
 	void subscriptorRecibeNotificacionTest() {
-		this.sistema.agregarSubscriptor(subscriptor);
 		when(subscriptor.criterio()).thenReturn("Informativo");
 		this.sistema.agregarArticulo(articulo1);
 		this.sistema.agregarArticulo(articulo2);
@@ -53,7 +53,6 @@ public class PublicacionesTest {
 	
 	@Test
 	void subscriptorNoRecibeNotificacionTest() {
-		this.sistema.agregarSubscriptor(subscriptor);
 		when(subscriptor.criterio()).thenReturn("Revista");
 		this.sistema.agregarArticulo(articulo1);
 		this.sistema.agregarArticulo(articulo2);
