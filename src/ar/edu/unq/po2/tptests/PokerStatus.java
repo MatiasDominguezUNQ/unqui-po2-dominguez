@@ -8,9 +8,15 @@ import java.util.List;
 public class PokerStatus {
 	
 	public Jugada verificar(List<Carta> cartas) {		
-		if(this.esPoker(cartas))return new Jugada("Poker") ;
-		if(this.esTrio(cartas))return new Jugada("Trio") ;
-		if(this.esColor(cartas))return new Jugada("Color") ;
+		if(this.esPoker(cartas)) {
+			return new Jugada("Poker");
+		}
+		else if(this.esTrio(cartas)) { 
+			return new Jugada("Trio");
+		}
+		else if(this.esColor(cartas)) {
+			return new Jugada("Color");
+		}
 		else return new Jugada("Nada");
 	}
 	
@@ -23,59 +29,50 @@ public class PokerStatus {
 	}
 	
 	public boolean esPoker( List<Carta> mano) {
-		int cantidadIguales;
-		int valorAChequear;
-		List<Carta> cartas = mano;
-		valorAChequear = cartas.get(0).getValor();
-		cantidadIguales = 0;
-		for (int i = 0 ; i<cartas.size() ; i++) {
-			if (cartas.get(i).getValor() == valorAChequear) cantidadIguales++;
+		int valorAChequear = mano.get(0).getValor();
+		int cantidadIguales = 0;
+		for (int i = 0 ; i<mano.size() ; i++) {
+			if (mano.get(i).getValor() == valorAChequear) cantidadIguales++;
 		}
 		if (cantidadIguales < 4) {
-			valorAChequear = cartas.get(1).getValor();
+			valorAChequear = mano.get(1).getValor();
 			cantidadIguales = 0;
-			for (int i = 0 ; i<cartas.size() ; i++) {
-				if (cartas.get(i).getValor() == valorAChequear) cantidadIguales++;
+			for (int i = 0 ; i<mano.size() ; i++) {
+				if (mano.get(i).getValor() == valorAChequear) cantidadIguales++;
 			}
 		}
 		return (cantidadIguales == 4);
 	}
 	
 	public boolean esTrio(List <Carta> mano) {
-		int cantidadIguales;
-		int valorAChequear;
-		List<Carta> cartas = mano;
-		valorAChequear = cartas.get(0).getValor();
-		cantidadIguales = 0;
-		for (int i = 0 ; i<cartas.size() ; i++) {
-			if (cartas.get(i).getValor() == valorAChequear) cantidadIguales++;
+		int valorAChequear = mano.get(0).getValor();
+		int cantidadIguales = 0;
+		for (int i = 0 ; i<mano.size() ; i++) {
+			if (mano.get(i).getValor() == valorAChequear) cantidadIguales++;
 		}		
 		if (cantidadIguales < 3) {
-			valorAChequear = cartas.get(1).getValor();
+			valorAChequear = mano.get(1).getValor();
 			cantidadIguales = 0;
-			for (int i = 0 ; i<cartas.size() ; i++) {
-				if (cartas.get(i).getValor() == valorAChequear) cantidadIguales++;
+			for (int i = 0 ; i<mano.size() ; i++) {
+				if (mano.get(i).getValor() == valorAChequear) cantidadIguales++;
 			}
 		}		
 		if (cantidadIguales < 3) {
-			valorAChequear = cartas.get(2).getValor();
+			valorAChequear = mano.get(2).getValor();
 			cantidadIguales = 0;
-			for (int i = 0 ; i<cartas.size() ; i++) {
-				if (cartas.get(i).getValor() == valorAChequear) cantidadIguales++;
+			for (int i = 0 ; i<mano.size() ; i++) {
+				if (mano.get(i).getValor() == valorAChequear) cantidadIguales++;
 			}
 		}
 		return (cantidadIguales == 3);
 	}
 	
 	public boolean esColor(List<Carta> mano) {
-		int cantidadIguales;
-		String paloAChequear;
-		List<Carta> cartas = mano;
-		paloAChequear = cartas.get(0).getPalo();
+		String paloAChequear = mano.get(0).getPalo();
 		//System.out.print(cartaAChequear);
-		cantidadIguales = 0;
-		for (int i = 0 ; i<cartas.size() ; i++) {
-			if (cartas.get(i).getPalo() == paloAChequear) cantidadIguales++;
+		int cantidadIguales = 0;
+		for (int i = 0 ; i<mano.size() ; i++) {
+			if (mano.get(i).getPalo() == paloAChequear) cantidadIguales++;
 		}
 		return (cantidadIguales == 5);
 	}

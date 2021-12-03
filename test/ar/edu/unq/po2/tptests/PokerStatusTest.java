@@ -2,7 +2,8 @@ package ar.edu.unq.po2.tptests;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,9 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PokerStatusTest {
-	//SETUP TDD
-	PokerStatus pokerStatus;
-	Carta carta1;
+	PokerStatus pokerStatus; //SUT
+	Carta carta1; //DOC
 	Carta carta2;
 	Carta carta3;
 	Carta carta4;
@@ -23,9 +23,7 @@ public class PokerStatusTest {
 	Carta carta8;
 	Carta carta9;
 	Carta carta10;
-	Jugada jugadaFinal;	
 	
-	//SUT
 	@BeforeEach
 	public void setUp() throws Exception {
 		pokerStatus = new PokerStatus();
@@ -39,7 +37,6 @@ public class PokerStatusTest {
 		carta8 = new Carta("11","C");
 		carta9 = new Carta("12","C");
 		carta10 = new Carta("13","C");
-		jugadaFinal = new Jugada(null);
 	}	
 	
 	@Test
@@ -49,16 +46,11 @@ public class PokerStatusTest {
 		List<Carta> jugada2 = Arrays.asList(carta7, carta2 , carta3, carta4 ,carta1);
 		Jugada primeraJugada  = pokerStatus.verificar(jugada);
 		Jugada segundaJugada = pokerStatus.verificar(jugada2);
-		
-		
-		
 		//Verify
 		assertEquals("Poker",primeraJugada.getTipoJugada());
 		assertEquals("Poker",segundaJugada.getTipoJugada());
 		assertTrue(primeraJugada.getTipoJugada()=="Poker");
-		assertTrue(segundaJugada.getTipoJugada()=="Poker");
-		
-		
+		assertTrue(segundaJugada.getTipoJugada()=="Poker");		
 	}
 	
 	@Test
@@ -94,8 +86,8 @@ public class PokerStatusTest {
 	@Test
 	public void noHayJugada() {
 		//Exercise
-		List<Carta> jugada = Arrays.asList(carta6,carta5,carta7,carta4,carta1);
-		Jugada septimaJugada  = pokerStatus.verificar(jugada);
+		List<Carta> mano = Arrays.asList(carta6,carta5,carta7,carta4,carta1);
+		Jugada septimaJugada  = pokerStatus.verificar(mano);
 		//Verify
 		assertEquals("Nada",septimaJugada.getTipoJugada());
 		assertTrue(septimaJugada.getTipoJugada()=="Nada") ;
@@ -104,10 +96,30 @@ public class PokerStatusTest {
 	@Test
 	public void ganador() {
 		//Exercise
-		List<Carta> jugada = Arrays.asList(carta1, carta2 , carta3, carta4 ,carta5);
-		List<Carta> jugada2 = Arrays.asList(carta6,carta5,carta7,carta4,carta1);		
+		List<Carta> mano1 = Arrays.asList(carta1, carta2 , carta3, carta4 ,carta5);
+		List<Carta> mano2 = Arrays.asList(carta6,carta5,carta7,carta4,carta1);		
+		Jugada jugada  = pokerStatus.verificar(mano1);
 		//Verify		
-		jugadaFinal.jugadaGanador(jugada, jugada2);
+		assertTrue(jugada.jugadaGanador(mano1, mano2) == mano1);
 		
-	}	
+	}
+	
+	@Test
+	public void verificarPokerMockito() {
+		//Setup
+		this.carta1 = mock(Carta.class);
+		this.carta2 = mock(Carta.class);
+		this.carta3 = mock(Carta.class);
+		this.carta4 = mock(Carta.class);
+		this.carta5 = mock(Carta.class);
+		//Exercise
+		when(carta1.getValor()).thenReturn(2);
+		when(carta2.getValor()).thenReturn(2);
+		when(carta3.getValor()).thenReturn(2);
+		when(carta4.getValor()).thenReturn(2);
+		when(carta5.getValor()).thenReturn(3);
+		Jugada jugada = pokerStatus.verificar(Arrays.asList(carta1, carta2, carta3, carta4, carta5));
+		//Verify
+		assertEquals(jugada.getTipoJugada(), "Poker");		
+	}
 }

@@ -6,10 +6,18 @@ public class Carta {
 	
 	public int getValor() {
 		String numero = "" ;
-		if(valor=="A") numero = "14";
-		if(valor=="K") numero = "13";
-		if(valor=="Q") numero = "12";
-		if(valor=="J") numero = "11";
+		if(valor=="A") {
+			numero = "14";
+		}
+		else if(valor=="K") {
+			numero = "13";
+		}
+		else if(valor=="Q") {
+			numero = "12";
+		}
+		else if(valor=="J") {
+			numero = "11";
+		}
 		else numero = valor;
 		return Integer.parseInt(numero);
 	}
@@ -28,17 +36,17 @@ public class Carta {
 		this.valor = valor;
 		this.palo = palo ;
 	}
-	public boolean mismoPalo(Carta carta1,Carta carta2) {
+	public boolean esMismoPaloQue(Carta carta) {
 		
-		return (carta1.getPalo()==carta2.getPalo());
+		return (this.getPalo()==carta.getPalo());
 	}
 	
-	public boolean esMayorValor(Carta carta1,Carta carta2) {
-		return (carta1.getValor() > carta2.getValor());
+	public boolean esMayorValorQue(Carta carta) {
+		return (this.getValor() > carta.getValor());
 	}
 	public Carta cartaMayor(Carta carta1,Carta carta2) {
 		
-		if (this.esMayorValor(carta1, carta2)) return carta1 ;
+		if (carta1.esMayorValorQue(carta2)) return carta1;
 		else return carta2 ;
 	}
 }

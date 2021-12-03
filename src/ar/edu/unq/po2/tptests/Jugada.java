@@ -3,7 +3,7 @@ package ar.edu.unq.po2.tptests;
 import java.util.List;
 
 public class Jugada {	
-	String tipoJugada;	
+	private String tipoJugada;	
 
 	public Jugada(String tipoJugada) {		
 		this.tipoJugada = tipoJugada;
@@ -17,20 +17,18 @@ public class Jugada {
 		this.tipoJugada = tipoJugada;
 	}
 
-	public void jugadaGanador(List<Carta>jugada1,List<Carta>jugada2) {
-		PokerStatus controlador = new PokerStatus();		
-		List<Carta> manoGanadora = null;	
-		if(controlador.esEmpate(jugada1, jugada2)) manoGanadora = controlador.empate(jugada1, jugada2);
-		if(controlador.verificar(jugada1).getTipoJugada() == "Poker") manoGanadora = jugada1;
-		if(controlador.verificar(jugada2).getTipoJugada() == "Poker") manoGanadora = jugada2;
-		if(controlador.verificar(jugada1).getTipoJugada() == "Color") manoGanadora = jugada1;
-		if(controlador.verificar(jugada2).getTipoJugada() == "Color") manoGanadora = jugada2;
-		System.out.print("MANO GANADORA :");
-		for (int i = 0; i < manoGanadora.size(); i++) {			
-			System.out.print(manoGanadora.get(i).getValor()+manoGanadora.get(i).getPalo()+ " ");			
+	public List<Carta> jugadaGanador(List<Carta>mano1,List<Carta>mano2) {
+		PokerStatus controlador = new PokerStatus();
+		Jugada jugada1 = controlador.verificar(mano1);
+		Jugada jugada2 = controlador.verificar(mano2);
+		if(controlador.esEmpate(mano1, mano2)) return controlador.empate(mano1, mano2);
+		if(((jugada1.getTipoJugada() == "Poker") || 
+			((jugada1.getTipoJugada() == "Color") && (jugada2.getTipoJugada() == "Trio"))  ||
+			((jugada1.getTipoJugada() == "Trio")  && (jugada2.getTipoJugada() == "Nada")))) {
+			return mano1;
+		} 
+		else {
+			return mano2;		
 		}
-		System.out.print("\n");
-		System.out.print("TIPO JUGADA :");
-		System.out.print(controlador.verificar(manoGanadora).getTipoJugada());		
-	}	
+	}
 }
