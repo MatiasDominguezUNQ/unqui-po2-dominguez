@@ -10,7 +10,7 @@ public class Sistema {
 	public Sistema() {
 		this.articulos = new ArrayList<Articulo>();
 		this.subscriptores = new ArrayList<ISubscriptor>();
-}
+	}
 
 	public List<Articulo> getArticulos() {
 		return articulos;
