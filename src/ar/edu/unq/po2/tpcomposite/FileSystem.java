@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tpcomposite;
 
-
+	//Rol: Component
 public interface FileSystem {
 
 	public int totalSize();

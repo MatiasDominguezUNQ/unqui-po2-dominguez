@@ -1,7 +1,8 @@
 package ar.edu.unq.po2.tpcomposite;
 
 import java.util.Date;
-
+	
+	//Rol: Composite
 public abstract class File implements FileSystem {
 	
 	public abstract Date fechaModificacion();

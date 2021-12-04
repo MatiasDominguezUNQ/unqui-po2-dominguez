@@ -3,6 +3,7 @@ package ar.edu.unq.po2.tpcomposite;
 import java.time.LocalDate;
 import java.util.Date;
 
+	//Rol: Leaf
 public class Archivo extends File {
 	
 	private String nombre;

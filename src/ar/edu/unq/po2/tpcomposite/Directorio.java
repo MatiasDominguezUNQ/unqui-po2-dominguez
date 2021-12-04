@@ -2,7 +2,8 @@ package ar.edu.unq.po2.tpcomposite;
 
 import java.util.Date;
 import java.util.List;
-
+	
+	//Rol: Leaf
 public class Directorio extends File {
 	
 	private String nombre;
